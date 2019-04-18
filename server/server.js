@@ -30,4 +30,4 @@ app.use('/api/photos', photos.routes)
 
 
 
-app.listen(3001, () => console.log('Server listening on port 3002!'));
+app.listen(3002, () => console.log('Server listening on port 3002!'));

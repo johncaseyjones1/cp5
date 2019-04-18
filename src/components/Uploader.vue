@@ -103,6 +103,7 @@ export default {
         console.log("HOOJOO is " + hoojoo);
         const fDat = new FormData();
         await fDat.append('url', hoojoo);
+        await fDat.append('title', this.title);
         await axios.post('/api/photos/hmm', fDat);
         const formData = new FormData();
         formData.append('title', this.title);
