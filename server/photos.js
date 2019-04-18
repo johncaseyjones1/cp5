@@ -52,7 +52,7 @@ router.post("/hmm", upload.none(), async (req, res) => {
   console.log("in the hmm thing, req.body.url= " + req.body.url);
   console.log("in the hmm thing, req.body.title= " + req.body.title);
   imageInt = imageInt + 1;
-  currentName = req.body.title;
+  currentName = req.body.url;
   const options = {
     url: req.body.url,
     dest: "../public/images/temp_image" + currentName + imageInt + ".png",
