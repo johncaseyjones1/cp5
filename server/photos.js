@@ -55,7 +55,7 @@ router.post("/hmm", upload.none(), async (req, res) => {
   currentName = req.body.url;
   const options = {
     url: req.body.url,
-    dest: "../public/images/temp_image" + currentName + imageInt + ".png",
+    dest: "/var/www/cp5.techvaccine.com/images/temp_image" + currentName + imageInt + ".png",
   }
   console.log(options.dest);
   //removes stop words (and, the, etc.)
