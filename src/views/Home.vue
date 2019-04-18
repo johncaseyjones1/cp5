@@ -1,6 +1,9 @@
 <template>
 <div class="home">
   <image-gallery :photos="photos" />
+  <div class="footer">
+    <a href="https://github.com/johncaseyjones1/cp5">My github</a>
+  </div>
 </div>
 </template>
 
@@ -23,3 +26,12 @@ export default {
   },
 }
 </script>
+
+<style>
+.footer {
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+}
+</style>

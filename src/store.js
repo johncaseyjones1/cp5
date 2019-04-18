@@ -71,12 +71,12 @@ export default new Vuex.Store({
     async upload(context, data) {
       try {
         console.log("This is data.url-> " + data.get('url'));
-        let response = await axios.all('/api/photos/hmm', data);
-        console.log("lololo" + response.data.filename);
+        //await axios.post('/api/photos/hmm', data);
+        //console.log("lololo" + response.data.filename);
         //const formData = new FormData();
         //formData = data;
         //var file = new File('../server/temp_image.png');
-        data.append('photo', response.file, response.filename);
+        //data.append('photo', response.file, response.filename);
         await axios.post('/api/photos', data);
         return "";
       } catch (error) {

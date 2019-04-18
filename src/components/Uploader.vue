@@ -27,6 +27,7 @@
 <script>
 var unirest = require('unirest');
 var sw = require('stopword');
+import axios from 'axios';
 
 var hoojoo = "";
 
@@ -90,7 +91,8 @@ export default {
         });
       console.log("HEHEHEHE" + this.wordCloudURL);
 
-      this.wordCloudURL = tempURL;
+      this.wordCloudURL = tempURL
+
     },
     close() {
       console.log("HAHSDAJSDHJASDH");
@@ -99,6 +101,9 @@ export default {
     async upload() {
       try {
         console.log("HOOJOO is " + hoojoo);
+        const fDat = new FormData();
+        await fDat.append('url', hoojoo);
+        await axios.post('/api/photos/hmm', fDat);
         const formData = new FormData();
         formData.append('title', this.title);
         formData.append('description', this.description);

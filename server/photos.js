@@ -6,7 +6,8 @@ var unirest = require('unirest');
 const router = express.Router();
 const auth = require("./auth.js");
 const bodyParser = require("body-parser");
-
+var imageInt = 0;
+var currentName = "";
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 
@@ -47,13 +48,16 @@ const Photo = mongoose.model('Photo', photoSchema);
 
 //var tempImage = new File('./temp_image');
 
-router.all("/hmm", upload.none(), async (req, res) => {
+router.post("/hmm", upload.none(), async (req, res) => {
   console.log("in the hmm thing, req.body.url= " + req.body.url);
   console.log("in the hmm thing, req.body.title= " + req.body.title);
+  imageInt = imageInt + 1;
+  currentName = req.body.title;
   const options = {
     url: req.body.url,
-    dest: "./temp_image.png",
+    dest: "../public/images/temp_image" + currentName + imageInt + ".png",
   }
+  console.log(options.dest);
   //removes stop words (and, the, etc.)
   let ret = {
     file: null,
@@ -66,31 +70,29 @@ router.all("/hmm", upload.none(), async (req, res) => {
     }) => {
       this.file = image;
       this.file.name = filename
-      ret = {
-        file: this.file,
-        filename: this.file.name
-      }
-      console.log('File saved to', filename)
 
+      console.log('File saved to ', "../public/images/temp_image" + currentName + imageInt + ".png")
+      return res.sendStatus(200);
     })
     .catch((err) => {
       console.error(err)
     })
-
-  res.status(200).send(ret);
+  return res.sendStatus(200);
 })
 
 // upload photo
-router.post("/", auth.verifyToken, User.verify, upload.single('photo'), async (req, res) => {
+router.post("/", auth.verifyToken, User.verify, upload.none(), async (req, res) => {
   // check parameters
   /*if (!req.file)
     return res.status(400).send({
       message: "Must upload a file."
     });*/
   console.log("in post");
+
+
   const photo = new Photo({
     user: req.user,
-    path: "/images/" + req.file.filename,
+    path: "/images/temp_image" + currentName + imageInt + ".png",
     title: req.body.title,
     description: req.body.description,
   });

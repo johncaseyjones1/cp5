@@ -7,7 +7,6 @@
       <span v-if="photo.user.name">{{photo.user.name}}, </span>
       {{formatDate(photo.created)}}
     </p>
-    <p>{{photo.description}}</p>
   </div>
 </div>
 </template>
