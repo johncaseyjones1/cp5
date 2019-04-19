@@ -11,8 +11,9 @@
           <form @submit.prevent="upload">
             <input v-model="title" placeholder="Title">
             <p></p>
-            <textarea v-model="description" placeholder="Paste your philosophy here"></textarea>
-            <p></p>
+            <editor v-model="description"></editor>
+            
+<p></p>
             <button type="button" @click="generateWordCloud" class="pure-button">Generate word cloud</button>
             <button type="button" @click="close" class="pure-button">Close</button>
             <button type="submit" class="pure-button pure-button-secondary">Upload</button>
@@ -31,10 +32,18 @@ import axios from 'axios';
 
 var hoojoo = "";
 
+import Editor from '@/components/Editor.vue'
+
+
 export default {
   name: 'Uploader',
   props: {
     show: Boolean,
+  },
+components: {
+
+    // eslint-disable-next-line
+    Editor
   },
   data() {
     return {
@@ -60,7 +69,7 @@ export default {
       var tempURL = "";
       var stoppedArray = this.description.split(' ');
       var unstoppedArray = sw.removeStopwords(stoppedArray);
-      var unstoppedString = unstoppedArray.toString().replace(/,|\.|-|;|:|\?|\(|\)|—|"|<|>|“|”|,/g, " ");
+      var unstoppedString = unstoppedArray.toString().replace(u|\/u|h1|h2|h3|h4|\/h1|\/h2|\/h3|\/h4|em|\/em|\/p|p|br|\/br|,|b|\/b|\.|-|;|:|\?|\(|\)|—|"|<|>|“|”|,/g, " ");
       console.log(unstoppedString);
       unirest.post("https://wordcloudservice.p.rapidapi.com/generate_wc")
         .header("X-RapidAPI-Host", "wordcloudservice.p.rapidapi.com")
