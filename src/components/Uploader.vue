@@ -69,7 +69,7 @@ components: {
       var tempURL = "";
       var stoppedArray = this.description.split(' ');
       var unstoppedArray = sw.removeStopwords(stoppedArray);
-      var unstoppedString = unstoppedArray.toString().replace(</u>|<\/u>|h1|h2|h3|h4|\/h1|\/h2|\/h3|\/h4|<em>|<\/em>|<\/p>|<p>|<br>|<\/br>|,|<b>|<\/b>|\.|-|;|:|\?|\(|\)|—|"|<|>|“|”|,/g, " ");
+      var unstoppedString = unstoppedArray.toString().replace(/<u>|<\/u>|h1|h2|h3|h4|\/h1|\/h2|\/h3|\/h4|<em>|<\/em>|<\/p>|<p>|<br>|<\/br>|,|<b>|<\/b>|\.|-|;|:|\?|\(|\)|—|"|<|>|“|”|,/g, " ");
       console.log(unstoppedString);
       unirest.post("https://wordcloudservice.p.rapidapi.com/generate_wc")
         .header("X-RapidAPI-Host", "wordcloudservice.p.rapidapi.com")
@@ -94,6 +94,7 @@ components: {
           console.log(result.status, result.headers, result.body, result.body.url);
           //this.$data.wordCloudURL.url = result.body.url;
           //setWordCloudURL(result.body.url);
+	window.alert("Your word cloud has been generate. You may not upload your philosophy.");
           hoojoo = result.body.url;
           console.log("IN FUNC" + tempURL);
           return tempURL;

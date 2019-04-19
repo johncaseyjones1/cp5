@@ -34,14 +34,14 @@
   /* display: inline-block; */
   /* Or set the width explicitly: */
   text-align: left;
-  background: #101D29;
+  background: #7e7cd1;
 }
 
 .pure-menu-heading {
   color: #fff;
   font-size: 1.2em;
   padding: 20px 20px;
-  background-color: #8A3063;
+  background-color: #292774;
   margin-bottom: 10px;
 }
 
@@ -52,11 +52,11 @@
 }
 
 .pure-menu-link:hover {
-  background: #223040;
+  background: #a19fde;
 }
 
 .pure-menu-link.router-link-exact-active {
-  background: #223040;
+  background: #a19fde;
   color: #fff;
 }
 
