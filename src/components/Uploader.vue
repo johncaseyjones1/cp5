@@ -69,7 +69,7 @@ components: {
       var tempURL = "";
       var stoppedArray = this.description.split(' ');
       var unstoppedArray = sw.removeStopwords(stoppedArray);
-      var unstoppedString = unstoppedArray.toString().replace(u|\/u|h1|h2|h3|h4|\/h1|\/h2|\/h3|\/h4|em|\/em|\/p|p|br|\/br|,|b|\/b|\.|-|;|:|\?|\(|\)|—|"|<|>|“|”|,/g, " ");
+      var unstoppedString = unstoppedArray.toString().replace(/u|\/u|h1|h2|h3|h4|\/h1|\/h2|\/h3|\/h4|em|\/em|\/p|p|br|\/br|,|b|\/b|\.|-|;|:|\?|\(|\)|—|"|<|>|“|”|,/g, " ");
       console.log(unstoppedString);
       unirest.post("https://wordcloudservice.p.rapidapi.com/generate_wc")
         .header("X-RapidAPI-Host", "wordcloudservice.p.rapidapi.com")
